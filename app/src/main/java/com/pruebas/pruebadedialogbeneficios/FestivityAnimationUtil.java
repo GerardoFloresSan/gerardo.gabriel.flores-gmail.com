@@ -142,6 +142,8 @@ public final class FestivityAnimationUtil {
                     .setRotationalAcceleration(360, 180)
                     .setTargetRotationalVelocity(360)
                     .setTouchEnabled(true);
+
+            confettiManager.animate();
         }
     }
 
