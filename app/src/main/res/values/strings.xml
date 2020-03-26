@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">PruebaDeDialogBeneficios</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_fa">Te faltan <b>S/1800 </b> más para alcanzar el nivel Coral</string>
+</resources>
