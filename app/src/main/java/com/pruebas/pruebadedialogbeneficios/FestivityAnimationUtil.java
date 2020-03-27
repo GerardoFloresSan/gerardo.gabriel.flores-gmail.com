@@ -6,13 +6,11 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.view.ViewGroup;
-
-import com.github.jinatonic.confetti.CommonConfetti;
-import com.github.jinatonic.confetti.ConfettiManager;
-import com.github.jinatonic.confetti.ConfettiSource;
-import com.github.jinatonic.confetti.ConfettoGenerator;
-import com.github.jinatonic.confetti.Utils;
-import com.github.jinatonic.confetti.confetto.BitmapConfetto;
+import com.pruebas.pruebadedialogbeneficios.confetti.CommonConfetti;
+import com.pruebas.pruebadedialogbeneficios.confetti.ConfettiManager;
+import com.pruebas.pruebadedialogbeneficios.confetti.ConfettiSource;
+import com.pruebas.pruebadedialogbeneficios.confetti.ConfettoGenerator;
+import com.pruebas.pruebadedialogbeneficios.confetti.confetto.BitmapConfetto;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -107,6 +105,24 @@ public final class FestivityAnimationUtil {
                     .animate();
         }
     }
+
+    public static void getCommonConfettiExplosion(int[] colors, ViewGroup container) {
+        int centerX = container.getWidth() / 2;
+        int centerY = container.getHeight() / 5 * 2;
+        CommonConfetti.explosion(container, centerX, centerY, colors).stream(3000);
+    }
+
+   /* public static void getCommonConfettiExplosion2(int[] colors, Resources resources, ViewGroup container) {
+        int size = resources.getDimensionPixelSize(R.dimen.default_confetti_size);
+        int centerX = container.getWidth() / 2;
+        int centerY = container.getHeight() / 5 * 2;
+
+        *//*ConfettiSource confettiSource = new ConfettiSource(-size, -size);
+
+        final CommonConfetti commonConfetti = CommonConfetti.rainingConfetti(container, confettiSource, colors);
+        commonConfetti.configureExplosion(container, centerX, centerY, colors);
+        commonConfetti.stream(3000);*//*
+    }*/
 
 
     public static void imageConfettiTwo(Resources resources, ViewGroup container, List<Integer> images) {

@@ -3,6 +3,7 @@ package com.pruebas.pruebadedialogbeneficios
 import android.app.Dialog
 import android.content.Context
 import android.content.res.Resources
+import android.graphics.Color
 import android.graphics.Paint
 import android.os.Bundle
 import android.os.Handler
@@ -14,9 +15,9 @@ import android.view.WindowManager
 import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import androidx.core.content.ContextCompat
-import com.github.jinatonic.confetti.ConfettiManager
 import kotlinx.android.synthetic.main.dialog_fullscreen.*
-import com.github.jinatonic.confetti.CommonConfetti
+import com.pruebas.pruebadedialogbeneficios.confetti.CommonConfetti
+
 
 class FullScreenDialog(
     context: Context,
@@ -113,6 +114,7 @@ class FullScreenDialog(
             }
         }
 
+
         if (!action.isEmpty()) {
             tvwAction.paintFlags = tvwAction.paintFlags or Paint.UNDERLINE_TEXT_FLAG
             tvwAction.visibility = View.VISIBLE
@@ -128,6 +130,7 @@ class FullScreenDialog(
             }
         }
 
+        @Suppress("CAST_NEVER_SUCCEEDS")
         scr?.let { images ->
             resources?.let {
                 content_animation_level.postDelayed({
@@ -136,11 +139,13 @@ class FullScreenDialog(
                         FestivityAnimationUtil.imageConfettiTwo(it, lnlContainer, images)
                     } else {
                         if (images.size >= 2) {
-                            FestivityAnimationUtil.getCommonConfetti(
+                            FestivityAnimationUtil.getCommonConfettiExplosion(intArrayOf(images[1], images[0]), lnlContainer)
+
+                            /*FestivityAnimationUtil.getCommonConfetti(
                                 images[0],
                                 images[1],
                                 it, lnlContainer
-                            )
+                            )*/
                         } else {
                             Log.wtf("YAYO", "Se debe añadir al menos dos colores para mostrar")
                         }

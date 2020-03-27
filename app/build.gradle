@@ -41,5 +41,5 @@ dependencies {
 
     implementation "androidx.cardview:cardview:$cardview_version"
 
-    implementation 'com.github.jinatonic.confetti:confetti:1.1.2'
+    //implementation 'com.github.jinatonic.confetti:confetti:1.1.2'
 }
