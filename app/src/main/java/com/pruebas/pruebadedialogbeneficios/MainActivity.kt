@@ -40,15 +40,17 @@ class MainActivity : AppCompatActivity() {
         btn_test.setOnClickListener {
 
             val dialogBuilder = FullScreenDialog.Builder(this)
-                .withTitle("")
-                .withMessage("")
+                .withTitleLevel("Perla")
+                .withTitleNamePerson("¡Muy Bien Gerardo Gabriel \\nFlores Sanchez!")
+                .withTitle("Te mantuviste en Nivel Perla")
+                .withMessage("Recuerda que mejorando tu nivel\\n tiene más y mejores beneficios")
                 .withIcon(R.drawable.ic_perla)
                 .withScreenDismiss(true)
                 .setTime(5000)
 
 
             dialogBuilder.withAnimation(
-                resources, FullScreenDialog.SIMPLE_ANIMATION,
+                resources, FullScreenDialog.EXPLOSION_ANIMATION,
                 ContextCompat.getColor(this, R.color.dorado),
                 ContextCompat.getColor(this, R.color.default_magenta)
             )

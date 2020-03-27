@@ -3,7 +3,6 @@ package com.pruebas.pruebadedialogbeneficios
 import android.app.Dialog
 import android.content.Context
 import android.content.res.Resources
-import android.graphics.Color
 import android.graphics.Paint
 import android.os.Bundle
 import android.os.Handler
@@ -16,7 +15,6 @@ import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.dialog_fullscreen.*
-import com.pruebas.pruebadedialogbeneficios.confetti.CommonConfetti
 
 
 class FullScreenDialog(
@@ -135,17 +133,22 @@ class FullScreenDialog(
             resources?.let {
                 content_animation_level.postDelayed({
                     if (type == CUSTOM_ANIMATION) {
+                        FestivityAnimationUtil.imageConfetti(it, lnlContainer, images)
+                    } else if (type == EXPLOSION_ANIMATION) {
+                        FestivityAnimationUtil.getCommonConfettiExplosion(
+                            intArrayOf(
+                                images[1],
+                                images[0]
+                            ), lnlContainer
+                        )
 
-                        FestivityAnimationUtil.imageConfettiTwo(it, lnlContainer, images)
                     } else {
                         if (images.size >= 2) {
-                            FestivityAnimationUtil.getCommonConfettiExplosion(intArrayOf(images[1], images[0]), lnlContainer)
-
-                            /*FestivityAnimationUtil.getCommonConfetti(
+                            FestivityAnimationUtil.getCommonConfetti(
                                 images[0],
                                 images[1],
                                 it, lnlContainer
-                            )*/
+                            )
                         } else {
                             Log.wtf("YAYO", "Se debe añadir al menos dos colores para mostrar")
                         }
@@ -350,5 +353,6 @@ class FullScreenDialog(
     companion object {
         const val SIMPLE_ANIMATION = 1
         const val CUSTOM_ANIMATION = 2
+        const val EXPLOSION_ANIMATION = 3
     }
 }
