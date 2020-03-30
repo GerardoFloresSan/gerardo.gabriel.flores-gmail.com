@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         btn_test.setOnClickListener {
 
             val dialogBuilder = FullScreenDialog.Builder(this)
+                .withTitleYourLevel("Tu Nivel:")
                 .withTitleLevel("Perla")
                 .withTitleNamePerson("¡Muy Bien Gerardo Gabriel \\nFlores Sanchez!")
                 .withTitle("Te mantuviste en Nivel Perla")
@@ -51,8 +52,9 @@ class MainActivity : AppCompatActivity() {
 
             dialogBuilder.withAnimation(
                 resources, FullScreenDialog.EXPLOSION_ANIMATION,
-                ContextCompat.getColor(this, R.color.dorado),
-                ContextCompat.getColor(this, R.color.default_magenta)
+                ContextCompat.getColor(this, R.color.nuevo_color_animation),
+                ContextCompat.getColor(this, R.color.nuevo_color_animation_two),
+                ContextCompat.getColor(this, R.color.nuevo_color_animation_threet)
             )
 
             dialogBuilder.show()

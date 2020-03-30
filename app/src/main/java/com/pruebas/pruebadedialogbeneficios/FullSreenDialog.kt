@@ -22,6 +22,7 @@ class FullScreenDialog(
     private var icon: Int?,
     private var iconColor: Int?,
     private var iconAnimation: Boolean,
+    private var titleYourLevel: String?,
     private var titleLevel: String?,
     private var titleNamePerson: String?,
     private var title: String,
@@ -74,7 +75,7 @@ class FullScreenDialog(
             dismiss()
         }
 
-
+        tvwLblNivel.text = titleYourLevel
         tvwNivel.text = titleLevel
         tvwNamePerson.text = titleNamePerson
         tvwTitle.text = if (title.isNotEmpty() || titleHtml.isNullOrEmpty()) title else titleHtml
@@ -131,7 +132,7 @@ class FullScreenDialog(
         @Suppress("CAST_NEVER_SUCCEEDS")
         scr?.let { images ->
             resources?.let {
-                content_animation_level.postDelayed({
+                content_level.postDelayed({
                     if (type == CUSTOM_ANIMATION) {
                         FestivityAnimationUtil.imageConfetti(it, lnlContainer, images)
                     } else if (type == EXPLOSION_ANIMATION) {
@@ -186,6 +187,7 @@ class FullScreenDialog(
         private var icon: Int? = null
         private var iconColor: Int? = null
         private var iconAnimation: Boolean = false
+        private var titleYourLevel: String = ""
         private var titleLevel: String = ""
         private var titleNamePerson: String = ""
         private var title: String = ""
@@ -234,6 +236,11 @@ class FullScreenDialog(
 
         fun withIconAnimation(): Builder {
             this.iconAnimation = true
+            return this
+        }
+
+        fun withTitleYourLevel(titleYourLevel: String): Builder{
+            this.titleYourLevel = titleYourLevel
             return this
         }
 
@@ -318,6 +325,7 @@ class FullScreenDialog(
             icon,
             iconColor,
             iconAnimation,
+            titleYourLevel,
             titleLevel,
             titleNamePerson,
             title,

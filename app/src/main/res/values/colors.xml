@@ -253,4 +253,8 @@
     <color name="virtual_store_pale_gray">#FCFCFC</color>
     <color name="virtual_store_dark_gray">#969696</color>
 
+    <color name="nuevo_color_animation">#C358D1</color>
+    <color name="nuevo_color_animation_two">#F2B3FC</color>
+    <color name="nuevo_color_animation_threet">#FF35A2</color>
+
 </resources>
