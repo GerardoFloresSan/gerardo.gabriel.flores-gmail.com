@@ -108,7 +108,7 @@ public final class FestivityAnimationUtil {
 
     public static void getCommonConfettiExplosion(int[] colors, ViewGroup container) {
         int centerX = container.getWidth() / 2;
-        int centerY = container.getHeight() / 5 * 2;
+        int centerY = container.getHeight() / 5;
         CommonConfetti.explosion(container, centerX, centerY, colors).stream(3000);
     }
 

@@ -39,25 +39,53 @@ class MainActivity : AppCompatActivity() {
 
         btn_test.setOnClickListener {
 
+
+
+            //TODO animacion para cuando subes o bajas de nivel
             val dialogBuilder = FullScreenDialog.Builder(this)
                 .withTitleYourLevel("Tu Nivel:")
                 .withTitleLevel("Perla")
                 .withTitleNamePerson("¡Muy Bien Gerardo Gabriel \\nFlores Sanchez!")
                 .withTitle("Te mantuviste en Nivel Perla")
+
                 .withMessage("Recuerda que mejorando tu nivel\\n tiene más y mejores beneficios")
                 .withIcon(R.drawable.ic_perla)
                 .withScreenDismiss(true)
                 .setTime(5000)
 
-
             dialogBuilder.withAnimation(
-                resources, FullScreenDialog.EXPLOSION_ANIMATION,
+                resources, FullScreenDialog.EXPLOSION_ANIMATION_LEVEL,
                 ContextCompat.getColor(this, R.color.nuevo_color_animation),
                 ContextCompat.getColor(this, R.color.nuevo_color_animation_two),
                 ContextCompat.getColor(this, R.color.nuevo_color_animation_threet)
             )
 
             dialogBuilder.show()
+
+
+            /*
+            //TODO animacion para ver cuantas medallas tienes
+            val dialogBuilderIcon = FullScreenDialog.Builder(this)
+                .withIcon(R.drawable.ic_medalla)
+                .withTitleIcon("Ya tienes")
+                .withValueIcon("350")
+                .withSubTitleIcon("medallas")
+                .withDescriptionIcon("Canjéalas por productos y\\n experiencias inolvidables para ti y \\ntu familia")
+                .withScreenDismiss(true)
+                .setTime(5000)
+
+
+            dialogBuilderIcon.withAnimation(
+                resources, FullScreenDialog.EXPLOSION_ANIMATION_ICON,
+                ContextCompat.getColor(this, R.color.nuevo_color_animation),
+                ContextCompat.getColor(this, R.color.nuevo_color_animation_two),
+                ContextCompat.getColor(this, R.color.nuevo_color_animation_threet)
+            )
+
+            dialogBuilderIcon.show()
+            */
+
+
 
             /*
             val old = 300

@@ -22,9 +22,20 @@ class FullScreenDialog(
     private var icon: Int?,
     private var iconColor: Int?,
     private var iconAnimation: Boolean,
+    /****************************/
+    //NUEVO DISEÑO DE ANIMACION DE SUBE BAJA
     private var titleYourLevel: String?,
     private var titleLevel: String?,
     private var titleNamePerson: String?,
+    /****************************/
+    //NUEVP DISEÑO DE ANIMACION DE MEDALLAS
+    private var iconTwo: Int?,
+    private var titleIcon: String?,
+    private var valueIcon: String?,
+    private var subTitleIcon: String?,
+    private var descriptionIcon: String?,
+
+    /****************************/
     private var title: String,
     private var titleHtml: Spanned?,
     private var titleAllCaps: Boolean,
@@ -61,6 +72,8 @@ class FullScreenDialog(
             ivDialog.setImageResource(it)
         }
 
+
+
         iconColor?.let {
             ivDialog.setColorFilter(ContextCompat.getColor(context, it))
         }
@@ -74,6 +87,27 @@ class FullScreenDialog(
         ivwDialogCloseGeneral.setOnClickListener {
             dismiss()
         }
+
+
+        /****************************************************/
+        /******************NIVEL DE CONSULTORA***************/
+        /****************************************************/
+
+
+        /****************************************************/
+        /********************** MEDALLAS ********************/
+        /****************************************************/
+
+        iconTwo?.let {
+        iv_Icon.setImageResource(it)
+        }
+
+        tvwTitleIcon.text = titleIcon
+        tvwValueIcons.text = valueIcon
+        tvwSubTitleIcon.text = subTitleIcon
+        tvwDescriptionIcon.text = descriptionIcon
+
+
 
         tvwLblNivel.text = titleYourLevel
         tvwNivel.text = titleLevel
@@ -132,18 +166,42 @@ class FullScreenDialog(
         @Suppress("CAST_NEVER_SUCCEEDS")
         scr?.let { images ->
             resources?.let {
-                content_level.postDelayed({
-                    if (type == CUSTOM_ANIMATION) {
-                        FestivityAnimationUtil.imageConfetti(it, lnlContainer, images)
-                    } else if (type == EXPLOSION_ANIMATION) {
-                        FestivityAnimationUtil.getCommonConfettiExplosion(
-                            intArrayOf(
-                                images[1],
-                                images[0]
-                            ), lnlContainer
-                        )
 
-                    } else {
+                when (type) {
+                    CUSTOM_ANIMATION -> {
+                        content_level.postDelayed({
+                            FestivityAnimationUtil.imageConfetti(it, lnlContainer, images)
+                        }, 300)
+                    }
+                    EXPLOSION_ANIMATION_LEVEL -> {
+                        level.visibility = View.VISIBLE
+                        medalla.visibility = View.GONE
+
+                        content_animation_level.postDelayed({
+                            FestivityAnimationUtil.getCommonConfettiExplosion(
+                                intArrayOf(
+                                    images[1],
+                                    images[0]
+                                ), lnlContainer
+                            )
+                        }, 300)
+                    }
+                    EXPLOSION_ANIMATION_ICON -> {
+                        medalla.visibility = View.VISIBLE
+                        level.visibility = View.GONE
+
+                        content_animation_level.postDelayed({
+                            FestivityAnimationUtil.getCommonConfettiExplosion(
+                                intArrayOf(
+                                    images[1],
+                                    images[0]
+                                ), lnlContainer
+                            )
+                        }, 300)
+
+
+                    }
+                    else -> {
                         if (images.size >= 2) {
                             FestivityAnimationUtil.getCommonConfetti(
                                 images[0],
@@ -154,7 +212,9 @@ class FullScreenDialog(
                             Log.wtf("YAYO", "Se debe añadir al menos dos colores para mostrar")
                         }
                     }
-                }, 300)
+                }
+
+
                 if (vanish)
                     finishDialog()
             }
@@ -209,6 +269,12 @@ class FullScreenDialog(
         private var botonClose: Boolean = false
         private var timeInMillis: Long = 6500
 
+        private var iconTwo: Int? = null
+        private var titleIcon: String = ""
+        private var valueIcon: String = ""
+        private var subTitleIcon: String = ""
+        private var descriptionIcon: String = ""
+
         fun withButtonStyleDefault(default: Boolean = true): Builder {
             this.buttonStyleDefault = default
             return this
@@ -229,10 +295,38 @@ class FullScreenDialog(
             return this
         }
 
+        //TODO icon
+        fun withIconTwo(iconTwo: Int): Builder {
+            this.iconTwo = iconTwo
+            return this
+        }
+
+        fun withTitleIcon(titleIcon: String): Builder {
+            this.titleIcon = titleIcon
+            return this
+        }
+
+        fun withValueIcon(valueIcon: String): Builder {
+            this.valueIcon = valueIcon
+            return this
+        }
+
+        fun withSubTitleIcon(subTitleIcon: String): Builder {
+            this.subTitleIcon = subTitleIcon
+            return this
+        }
+
+        fun withDescriptionIcon(descriptionIcon: String): Builder {
+            this.descriptionIcon = descriptionIcon
+            return this
+        }
+        //TODO icon
+
         fun withIconColor(color: Int?): Builder {
             this.iconColor = color
             return this
         }
+
 
         fun withIconAnimation(): Builder {
             this.iconAnimation = true
@@ -328,6 +422,11 @@ class FullScreenDialog(
             titleYourLevel,
             titleLevel,
             titleNamePerson,
+            iconTwo,
+            titleIcon,
+            valueIcon,
+            subTitleIcon,
+            descriptionIcon,
             title,
             titleHtml,
             titleAllCaps,
@@ -361,6 +460,7 @@ class FullScreenDialog(
     companion object {
         const val SIMPLE_ANIMATION = 1
         const val CUSTOM_ANIMATION = 2
-        const val EXPLOSION_ANIMATION = 3
+        const val EXPLOSION_ANIMATION_LEVEL = 3
+        const val EXPLOSION_ANIMATION_ICON = 4
     }
 }
