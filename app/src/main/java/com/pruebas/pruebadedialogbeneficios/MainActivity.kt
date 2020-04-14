@@ -3,7 +3,6 @@ package com.pruebas.pruebadedialogbeneficios
 import android.animation.ValueAnimator
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -38,9 +37,10 @@ class MainActivity : AppCompatActivity() {
 
 
         btn_test.setOnClickListener {
+            val newWelcomeNewDialogCustom = WelcomeNewDialogCustom()
+            supportFragmentManager?.let { it1 -> newWelcomeNewDialogCustom.show(it1, "") }
 
-
-
+            /*
             //TODO animacion para cuando subes o bajas de nivel
             val dialogBuilder = FullScreenDialog.Builder(this)
                 .withTitleYourLevel("Tu Nivel:")
@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity() {
             )
 
             dialogBuilder.show()
-
+               */
 
             /*
             //TODO animacion para ver cuantas medallas tienes
